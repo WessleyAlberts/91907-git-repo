@@ -7,8 +7,6 @@ def close_window():
 def test():
     return "test"
 
-time_left = 60
-
 """Creates the Main Menu"""
 #Sets background colour to a variable
 bg_colour = "#858585"
@@ -24,6 +22,9 @@ master.title("Main Menu")
 
 #Creates an "image" of a pixel
 pixel = PhotoImage(width = 1, height = 1)
+
+#Initalises the timer
+time_left = StringVar(master=master, value=str(60))
 
 #Creates the area for the toolbar
 toolbar = Frame(master, bg = toolbar_colour, width = 1600, height = 200)
