@@ -6,8 +6,8 @@ from tkinter import *
 def make_dot():
     global dot_x, dot_y
     body.delete(ALL)
-    dot_x = randint(0, 1400)
-    dot_y = randint(200, 400)
+    dot_x = randint(0, 1500)
+    dot_y = randint(0, 600)
     body.create_oval(dot_x, dot_y, dot_x + 100, dot_y + 100, fill = "red")
     body.update()
 
