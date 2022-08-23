@@ -77,4 +77,8 @@ while delta_time > -1:
 body.unbind("<Button 1>")
 body.delete(ALL)
 
+score = StringVar(body, value = score)
+result = Label(body, bg = bg_colour, textvariable = score, compound = "c")
+result.place(x = 300,y = 300)
+
 master.mainloop()
