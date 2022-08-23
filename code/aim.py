@@ -77,8 +77,8 @@ while delta_time > -1:
 body.unbind("<Button 1>")
 body.delete(ALL)
 
-score = StringVar(body, value = score)
-result = Label(body, bg = bg_colour, textvariable = score, compound = "c")
-result.place(x = 300,y = 300)
+score_text = StringVar(body, value = "Score: "+str(score)+"\nAverage Time: "+"{000:3d}".format(round(10000/score))+"ms")
+result = Label(body, bg = bg_colour, textvariable = score_text, font = ("TkDefaultFont", 36), image = pixel, width = 1600, height = 600, compound = "c")
+result.place(x = 0, y = 0)
 
 master.mainloop()
