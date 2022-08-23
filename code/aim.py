@@ -1,4 +1,24 @@
+from random import randint
+from time import time
 from tkinter import *
+
+
+def make_dot():
+    global dot_x, dot_y
+    body.delete(ALL)
+    dot_x = randint(0, 1400)
+    dot_y = randint(200, 400)
+    body.create_oval(dot_x, dot_y, dot_x + 100, dot_y + 100, fill = "red")
+    body.update()
+
+def dot_click(event):
+    global dot_x, dot_y, score
+    x = event.x
+    y = event.y
+    if x > dot_x and x < dot_x + 100:
+        if y > dot_y and y < dot_y + 100:
+            score += 1
+            make_dot()
 
 def close_window():
     """Closes the window when called"""
@@ -24,7 +44,9 @@ master.title("Main Menu")
 pixel = PhotoImage(width = 1, height = 1)
 
 #Initalises the timer
-time_left = StringVar(master=master, value=str(60))
+time_left = StringVar(master=master, value=60)
+secs_left = time() + 10
+delta_time = secs_left - time()
 
 #Creates the area for the toolbar
 toolbar = Frame(master, bg = toolbar_colour, width = 1600, height = 200)
@@ -43,7 +65,16 @@ close_button = Button(toolbar, bg = toolbar_colour, fg = text_colour, text = "Cl
 close_button.place(x = 1420, y = 20)
 
 #Creates the area for the main content
-body = Frame(master, bg = bg_colour, width = 1600, height = 700)
+body = Canvas(master, bg = bg_colour, width = 1600, height = 700)
 body.place(x = 0, y = 200)
+score = 0
+body.bind("<Button 1>", dot_click)
+make_dot()
+while delta_time > -1:
+    time_left.set(delta_time)
+    master.update()
+    delta_time = round(secs_left - time())
+body.unbind("<Button 1>")
+body.delete(ALL)
 
 master.mainloop()
