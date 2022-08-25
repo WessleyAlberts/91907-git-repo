@@ -70,9 +70,9 @@ body.place(x = 0, y = 200)
 #Sets loop for the test to run
 score = 0
 click_num = 0
-body.bind("<Button 1>", dot_click)
 make_dot()
 while delta_time > -1:
+    body.bind("<Button 1>", dot_click)
     time_left.set(delta_time)
     body.update()
     delta_time = round(secs_left - time())
@@ -80,7 +80,9 @@ body.unbind("<Button 1>")
 body.delete(ALL)
 
 #Shows the result of the test
-score_text = StringVar(body, value = "Score: "+str(score)+"\nAverage Time: "+"{000:3d}".format(round(30000/score))+"ms\nAccuracy: "+"{00:0d}".format(int(round(score/click_num, 2)*100))+"%")
+avg_time = "{000:3d}".format(round(30000/score))
+accuracy = "{00:0d}".format(int(round(score/click_num, 2)*100))
+score_text = StringVar(body, value = "Score: "+str(score)+"\nAverage Time: "+avg_time+"ms\nAccuracy: "+accuracy+"%")
 result = Label(body, bg = bg_colour, textvariable = score_text, font = ("TkDefaultFont", 36), image = pixel, width = 1600, height = 600, compound = "c")
 result.place(x = 0, y = 0)
 
