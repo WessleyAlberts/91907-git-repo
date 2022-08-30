@@ -1,5 +1,12 @@
+from random import randrange
 from time import sleep
 from tkinter import *
+
+
+def new_num(length):
+    correct_num.clear()
+    for i in range(length):
+        correct_num.append(randrange(0,9))
 
 def close_window():
     """Closes the window when called"""
@@ -37,7 +44,8 @@ close_button.place(x = 1420, y = 20)
 body = Frame(master, bg = bg_colour, width = 1600, height = 700)
 body.place(x = 0, y = 200)
 
-correct_num = [1, 3, 8, 2]
+correct_num = []
+new_num(1)
 
 number = Label(body, bg = bg_colour, width = len(correct_num), height = 1, text = ''.join([str(x) for x in correct_num]), font = ("TkDefaultFont", 24), compound = "c")
 number.place(relx = 0.5, rely = 0.5, anchor = CENTER)
