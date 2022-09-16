@@ -14,7 +14,10 @@ def guess_confirm():
 def new_num(length):
     correct_num.clear()
     for i in range(length):
-        correct_num.append(randrange(0,9))
+        if i == 0:
+            correct_num.append(randrange(1,9))
+        else:
+            correct_num.append(randrange(0,9))            
 
 def close_window():
     """Closes the window when called"""
