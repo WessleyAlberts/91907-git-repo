@@ -83,8 +83,8 @@ while loop == True:
         break
     
 
-#show num_length - 1  as the score
-
+score = Label(body, bg = bg_colour, width = 15, height = 2, text = "Your score was\n"+str(num_length - 1), font = ("TkDefaultFont", 24), compound = "c")
+score.place(relx = 0.5, rely = 0.5, anchor = CENTER)
 
 
 master.mainloop()
