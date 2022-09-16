@@ -1,7 +1,15 @@
 from random import randrange
-from time import sleep
+from time import *
 from tkinter import *
 
+def clear_body():
+    for widget in body.winfo_children():
+        widget.destroy()
+
+def guess_confirm():
+    global num_guess
+    guessed.set(1)
+    num_guess = user_guess.get()
 
 def new_num(length):
     correct_num.clear()
@@ -45,9 +53,38 @@ body = Frame(master, bg = bg_colour, width = 1600, height = 700)
 body.place(x = 0, y = 200)
 
 correct_num = []
-new_num(1)
 
-number = Label(body, bg = bg_colour, width = len(correct_num), height = 1, text = ''.join([str(x) for x in correct_num]), font = ("TkDefaultFont", 24), compound = "c")
-number.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+loop = True
+num_guess = -1
+num_length = 1
+while loop == True:
+    body.update()
+    new_num(num_length)
+    number = Label(body, bg = bg_colour, width = num_length, height = 1, text = ''.join([str(x) for x in correct_num]), font = ("TkDefaultFont", 24), compound = "c")
+    number.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+    body.update()
+    sleep(num_length)
+    number.destroy()
+    
+    user_guess = Entry(body, bg = bg_colour, width = num_length, font = ("TkDefaultFont", 24))
+    user_guess.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+    guessed = IntVar()
+    confirm_btn = Button(body, bg = bg_colour, width = 7, height = 1, text = "Confirm", font = ("TkDefaultFont", 24), compound = "c", command = guess_confirm)
+    confirm_btn.place(relx = 0.5, rely = 0.6, anchor = CENTER)
+    
+    body.update()
+    confirm_btn.wait_variable(guessed)
+
+    clear_body()
+    
+    if num_guess == ''.join([str(x) for x in correct_num]):
+        num_length += 1
+    else:
+        break
+    
+
+#show num_length - 1  as the score
+
+
 
 master.mainloop()
