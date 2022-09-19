@@ -6,7 +6,7 @@ def clear_body():
     for widget in body.winfo_children():
         widget.destroy()
 
-def guess_confirm():
+def guess_confirm(event):
     global num_guess
     guessed.set(1)
     num_guess = user_guess.get()
@@ -74,8 +74,9 @@ while loop == True:
     guessed = IntVar()
     confirm_btn = Button(body, bg = bg_colour, width = 7, height = 1, text = "Confirm", font = ("TkDefaultFont", 24), compound = "c", command = guess_confirm)
     confirm_btn.place(relx = 0.5, rely = 0.6, anchor = CENTER)
-    
+    user_guess.bind("<Return>", guess_confirm)
     body.update()
+    user_guess.focus_set()
     confirm_btn.wait_variable(guessed)
 
     clear_body()
@@ -86,7 +87,7 @@ while loop == True:
         break
     
 
-score = Label(body, bg = bg_colour, width = 15, height = 2, text = "Your score was\n"+str(num_length - 1), font = ("TkDefaultFont", 24), compound = "c")
+score = Label(body, bg = bg_colour, width = 15, height = 2, text = "Your score was\n" + str(num_length - 1), font = ("TkDefaultFont", 24), compound = "c")
 score.place(relx = 0.5, rely = 0.5, anchor = CENTER)
 
 
