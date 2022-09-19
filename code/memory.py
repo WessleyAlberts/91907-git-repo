@@ -44,7 +44,7 @@ toolbar = Frame(master, bg = toolbar_colour, width = 1600, height = 200)
 toolbar.place(x = 0, y = 0)
 
 #Creates the title for the game
-game_title = Label(toolbar, bg = toolbar_colour, fg = text_colour, text = "Memory Test", font = ("TkDefaultFont", 36), image = pixel, width = 600, height = 150, compound = "c")
+game_title = Label(toolbar, bg = toolbar_colour, fg = text_colour, text = "Numaracy Memory Test", font = ("TkDefaultFont", 36), image = pixel, width = 600, height = 150, compound = "c")
 game_title.place(x = 500, y = 20)
 
 #Creates the close button (Needed because of -fullscreen being True)
