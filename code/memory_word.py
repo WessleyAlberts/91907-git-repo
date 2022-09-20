@@ -40,6 +40,6 @@ body.place(x = 0, y = 200)
 with open("words_alpha.txt") as words_file:
     words_list = []
     for line in words_file:
-        words_list.append(words_file.readline())
+        words_list.append(line)
 
 master.mainloop()
