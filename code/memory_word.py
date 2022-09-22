@@ -3,8 +3,8 @@ from random import randrange, choice
 
 def new_word():
     if score > 5:
-        n_or_o = randrange(0, 2)
-        if n_or_o == 0:
+        n_or_o = randrange(0, 10)
+        if n_or_o > 6:
             current_word.set(choice(words_list))
         else:
             current_word.set(choice(used_words))
