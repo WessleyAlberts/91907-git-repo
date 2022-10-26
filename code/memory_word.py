@@ -49,10 +49,6 @@ toolbar.place(x = 0, y = 0)
 game_title = Label(toolbar, bg = toolbar_colour, fg = text_colour, text = "Vocabulary Memory Test", font = ("TkDefaultFont", 36), image = pixel, width = 600, height = 150, compound = "c")
 game_title.place(x = 500, y = 20)
 
-#Creates the close button (Needed because of -fullscreen being True)
-close_button = Button(toolbar, bg = toolbar_colour, fg = text_colour, text = "Close", font = ("TkDefaultFont", 24), command = close_window, image = pixel, height = 160, width = 160, compound = "c")
-close_button.place(x = 1420, y = 20)
-
 #Creates the area for the main content
 body = Frame(master, bg = bg_colour, width = 1600, height = 700)
 body.place(x = 0, y = 200)
@@ -99,5 +95,9 @@ while loop == True:
 score_string = StringVar(body, "Your score was\n" + str(score))
 score = Label(body, bg = bg_colour, width = 15, height = 2, textvariable = score_string, font = ("TkDefaultFont", 24), compound = "c")
 score.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+
+#Creates the close button (Needed because of -fullscreen being True)
+close_button = Button(toolbar, bg = toolbar_colour, fg = text_colour, text = "Close", font = ("TkDefaultFont", 24), command = close_window, image = pixel, height = 160, width = 160, compound = "c")
+close_button.place(x = 1420, y = 20)
 
 master.mainloop()
