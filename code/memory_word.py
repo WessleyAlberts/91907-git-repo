@@ -62,9 +62,12 @@ guess = ""
 used_words = []
 current_word = StringVar(body)
 score = 0
+score_shown = IntVar(body)
 loop = True
 while loop == True:
     body.update()
+    shown_score = Label(body, bg = bg_colour, width = 31, height = 2, textvariable = score_shown, font = ("TkDefaultFont", 24), compound = "c")
+    shown_score.place(relx = 0.5, rely = 0.4, anchor = CENTER)
     new_word()
     word = Label(body, bg = bg_colour, width = 31, height = 2, textvariable = current_word, font = ("TkDefaultFont", 24), compound = "c")
     word.place(relx = 0.5, rely = 0.5, anchor = CENTER)
@@ -77,8 +80,6 @@ while loop == True:
     body.update()
     body.wait_variable(guessed)
     
-    print(used_words)
-    print(current_word.get())
     if guess == "New":
         if current_word.get() in used_words:
             break
@@ -89,8 +90,8 @@ while loop == True:
             score += 1
         else:
             break
-    print(score)
     used_words.append(current_word.get())
+    score_shown.set(score)
 
 score_string = StringVar(body, "Your score was\n" + str(score))
 score = Label(body, bg = bg_colour, width = 15, height = 2, textvariable = score_string, font = ("TkDefaultFont", 24), compound = "c")
