@@ -53,7 +53,7 @@ game_title.place(x = 500, y = 20)
 body = Frame(master, bg = bg_colour, width = 1600, height = 700)
 body.place(x = 0, y = 200)
 
-with open("C:\\Users\\wesel\\Desktop\\Cos\\2022\\91907_wessley_alberts\\91907 git repo\\code\\words_alpha.txt") as words_file:
+with open("words_alpha.txt") as words_file:
     words_list = []
     for line in words_file:
         words_list.append(line)
